@@ -51,22 +51,21 @@ jobs:
             run: |
                   docker login -u $DOCKER_USER -p $DOCKER_PASS
 
-
-
-
           - name: push to DockerHub
 
             run: |
                   docker push $DOCKER_USER/hello_world_test:$version 
+ 
+  deploy:
+ 
 
+    runs-on: ubuntu-latest
 
-            
-                  
-          
-                  
+    steps:
+          - name: run application
+            run: |
+                docker run $$DOCKER_USER/hello_world_test:$version
 
-          - name: check docker images
-            run: docker images 
           
 
           
