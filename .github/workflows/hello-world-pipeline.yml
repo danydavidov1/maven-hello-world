@@ -24,8 +24,8 @@ jobs:
           - name: check project varsion
             working-directory: my-app
             run: | 
-                  chmod +x check_version.sh          
-                  check_version.sh
+                  chmod +x ./change_version.sh          
+                  ./change_version.sh
              
           - uses: actions/checkout@v3
           - name: Build the Docker image
