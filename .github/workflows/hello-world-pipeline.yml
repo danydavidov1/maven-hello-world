@@ -37,7 +37,7 @@ jobs:
             env:
               docker_repo: ${{secrets.DOCKER_HUB_MAVEN_REPO}}
             run: |
-                  docker build -t $docker_repo/my-app:$version .
+                  docker build -t danielavidov/hello_world_test:$version .
             
                   
           
