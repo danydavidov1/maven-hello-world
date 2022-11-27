@@ -30,8 +30,14 @@ jobs:
           - name: Build the Docker image
             working-directory: my-app
             run: |
+                  echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+
                   echo "NEXTVERSION=$(echo ${version} | awk -F. -v OFS=. '{$NF += 1 ; print}')" >> $GITHUB_ENV
-                  echo $NEXTVERSION
+
+          - name: Test
+            run: |
+                    echo $version
+                    echo $NEXTVERSION
             
                   
           
