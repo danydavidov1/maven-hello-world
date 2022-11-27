@@ -20,7 +20,7 @@ jobs:
               java-version: '11'
               distribution: 'adopt'
 
-
+          - uses: actions/checkout@v3
           - name: check project varsion
             working-directory: my_app
             run: | 
