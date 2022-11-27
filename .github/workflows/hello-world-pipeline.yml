@@ -64,7 +64,7 @@ jobs:
     steps:
           - name: run application
             run: |
-                docker run $$DOCKER_USER/hello_world_test:$version
+                docker run $DOCKER_USER/hello_world_test:$version
 
           
 
