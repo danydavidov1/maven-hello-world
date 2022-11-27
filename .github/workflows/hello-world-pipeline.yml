@@ -36,9 +36,26 @@ jobs:
             working-directory: my-app
             env:
               docker_repo: ${{secrets.DOCKER_HUB_MAVEN_REPO}}
+              docker_user: ${{secrets.DOCKER_HUB_USER}}
+              docker_pass: ${{secrets.DOCKER_HUB_PASS}}
+
             run: |
                   echo $docker_repo
                   docker build -t danielavidov/hello_world_test:$version .
+
+
+          - name: login to DockerHub
+
+            run: |
+                  docker login -u $docker_user -p docker_pass
+        
+
+          - name: push to DockerHub
+
+            run: |
+                  docker push danielavidov/hello_world_test:$version 
+
+
             
                   
           
