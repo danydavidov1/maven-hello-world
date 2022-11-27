@@ -13,14 +13,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-          - name: login to DockerHub
-
-            run: |
-                  echo $DOCKER_USER
-            env:
-              DOCKER_USER: ${{ secrets.DOCKER_HUB_USER }}
-              DOCKER_PASS: ${{ secrets.DOCKER_HUB_PASS }}      
+    steps:     
         
           - uses: actions/checkout@v3
           - name: Set up JDK 11
@@ -49,6 +42,13 @@ jobs:
                   echo $docker_repo
                   docker build -t danielavidov/hello_world_test:$version .
 
+          - name: login to DockerHub
+
+            run: |
+                  docker login -u $DOCKER_USER -p $DOCKER_PASS
+            env:
+              DOCKER_USER: ${{ secrets.DOCKER_HUB_USER }}
+              DOCKER_PASS: ${{ secrets.DOCKER_HUB_PASS }} 
 
 
 
