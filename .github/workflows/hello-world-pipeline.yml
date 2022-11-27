@@ -34,8 +34,10 @@ jobs:
 
           - name: Build the Docker image
             working-directory: my-app
+            env:
+              docker_repo: ${{secrets.DOCKER_HUB_MAVEN_REPO}}
             run: |
-                  docker build -t ${secrets.DOCKER_HUB_MAVEN_REPO}/my-app:$version .
+                  docker build -t $docker_repo/my-app:$version .
             
                   
           
