@@ -31,7 +31,7 @@ jobs:
             working-directory: my-app
             run: |
                   echo "NEXTVERSION=$(echo ${version} | awk -F. -v OFS=. '{$NF += 1 ; print}')" >> $GITHUB_ENV
-                  docker build -t my-app:$NEXTVERSION
+                  echo $NEXTVERSION
             
                   
           
