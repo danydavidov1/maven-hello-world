@@ -30,7 +30,8 @@ jobs:
           - uses: actions/checkout@v3
           - name: Build the Docker image
             working-directory: my-app
-            run: docker build -t my-app:$NEXTVERSION .
+            run: |
+                  docker build -t my-app:$NEXTVERSION .
 
           - name: check docker images
             run: docker images  
