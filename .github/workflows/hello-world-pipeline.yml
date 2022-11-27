@@ -30,10 +30,13 @@ jobs:
           - name: Build the Docker image
             working-directory: my-app
             run: |
-                  echo $NEXTVERSION
+              export FOO=bar
+              echo "::set-env name=FOO::$FOO"
+          
+                  
 
           - name: check docker images
-            run: docker images  
+            run: echo $FOO  
           
 
           
