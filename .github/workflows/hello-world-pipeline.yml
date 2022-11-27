@@ -31,7 +31,7 @@ jobs:
             working-directory: my-app
             run: |
                   NEXTVERSION=$(echo ${version} | awk -F. -v OFS=. '{$NF += 1 ; print}')
-                  docker run -t my-app:$NEXTVERSION
+                  docker build -t my-app:$NEXTVERSION
           
                   
 
