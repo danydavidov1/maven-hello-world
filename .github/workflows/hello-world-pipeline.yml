@@ -27,12 +27,15 @@ jobs:
                   chmod +x ./change_version.sh          
                   ./change_version.sh
              
+          - name: set version var
+            working-directory: my-app
+            run: |
+                  echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
           - name: Build the Docker image
             working-directory: my-app
             run: |
-                  echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-                  docker build -t my-app:$version .
+                  docker build -t ${{ secrets.DOCKER_HUB_MAVEN_REPO }}/my-app:$version .
             
                   
           
