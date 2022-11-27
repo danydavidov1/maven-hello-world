@@ -32,12 +32,9 @@ jobs:
             run: |
                   echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
-                  echo "NEXTVERSION=$(echo ${version} | awk -F. -v OFS=. '{$NF += 1 ; print}')" >> $GITHUB_ENV
-
           - name: Test
             run: |
-                    echo $version
-                    echo $NEXTVERSION
+                  docker build -t my-app:$version
             
                   
           
