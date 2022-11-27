@@ -27,14 +27,11 @@ jobs:
                   chmod +x ./change_version.sh          
                   ./change_version.sh
              
+
           - name: Build the Docker image
             working-directory: my-app
             run: |
                   echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-
-          - name: Test
-            working-directory: my-app
-            run: |
                   docker build -t my-app:$version .
             
                   
