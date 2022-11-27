@@ -55,13 +55,7 @@ jobs:
 
             run: |
                   docker push $DOCKER_USER/hello_world_test:$version 
- 
-  deploy:
- 
 
-    runs-on: ubuntu-latest
-
-    steps:
           - name: run application
             run: |
                 docker run $DOCKER_USER/hello_world_test:$version
