@@ -22,6 +22,10 @@ jobs:
 
           - name: check project varsion
 
+            run: ls    
+
+          - name: check project varsion
+
             run: | 
              chmod +x ./check_version.sh          
              ./check_version.sh
