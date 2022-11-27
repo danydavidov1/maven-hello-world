@@ -7,8 +7,10 @@ RUN mvn clean package
 
 FROM openjdk:8-jre-alpine
 
+RUN useradd -ms /bin/bash daniel
 
-USER john
+USER daniel
+WORKDIR /home/daniel
 COPY --from=builder target/*.jar target/
 
 CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
