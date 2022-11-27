@@ -48,7 +48,7 @@ jobs:
           - name: login to DockerHub
 
             run: |
-                  docker login -u $docker_user -p docker_pass
+                  docker login -u $docker_user -p $docker_pass
         
 
           - name: push to DockerHub
