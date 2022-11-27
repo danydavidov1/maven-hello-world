@@ -29,10 +29,12 @@ jobs:
              
           - name: Build the Docker image
             working-directory: my-app
+            env: 
+                NEXTVERSION: $(echo ${version} | awk -F. -v OFS=. '{$NF += 1 ; print}')
             run: |
-                  NEXTVERSION=$(echo ${version} | awk -F. -v OFS=. '{$NF += 1 ; print}')
-                  "NEXTVERSION=$NEXTVERSION" >> $GITHUB_ENV
                   docker build -t my-app:$NEXTVERSION
+            
+                  
           
                   
 
