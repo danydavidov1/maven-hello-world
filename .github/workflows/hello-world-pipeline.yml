@@ -21,7 +21,7 @@ jobs:
               distribution: 'adopt'
 
           - uses: actions/checkout@v3
-          - name: check project varsion
+          - name: update project varsion
             working-directory: my-app
             run: | 
                   chmod +x ./change_version.sh          
@@ -37,6 +37,7 @@ jobs:
             env:
               docker_repo: ${{secrets.DOCKER_HUB_MAVEN_REPO}}
             run: |
+                  echo $docker_repo
                   docker build -t danielavidov/hello_world_test:$version .
             
                   
