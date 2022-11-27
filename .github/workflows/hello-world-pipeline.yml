@@ -31,6 +31,7 @@ jobs:
           - name: Build the Docker image
             working-directory: my-app
             run: |
+                  echo $NEXTVERSION
                   docker build -t my-app:$NEXTVERSION .
 
           - name: check docker images
