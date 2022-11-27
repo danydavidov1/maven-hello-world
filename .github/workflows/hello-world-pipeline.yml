@@ -9,6 +9,10 @@ on:
 jobs:
 
   build:
+    env:
+      docker_repo: ${{secrets.DOCKER_HUB_MAVEN_REPO}}
+      docker_user: ${{secrets.DOCKER_HUB_USER}}
+      docker_pass: ${{secrets.DOCKER_HUB_PASS}}
 
     runs-on: ubuntu-latest
 
@@ -34,10 +38,7 @@ jobs:
 
           - name: Build the Docker image
             working-directory: my-app
-            env:
-              docker_repo: ${{secrets.DOCKER_HUB_MAVEN_REPO}}
-              docker_user: ${{secrets.DOCKER_HUB_USER}}
-              docker_pass: ${{secrets.DOCKER_HUB_PASS}}
+
 
             run: |
                   echo $docker_repo
