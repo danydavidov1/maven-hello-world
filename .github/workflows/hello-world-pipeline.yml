@@ -9,10 +9,7 @@ on:
 jobs:
 
   build:
-    env:
-      docker_repo: ${{secrets.DOCKER_HUB_MAVEN_REPO}}
-      docker_user: ${{secrets.DOCKER_HUB_USER}}
-      docker_pass: ${{secrets.DOCKER_HUB_PASS}}
+
 
     runs-on: ubuntu-latest
 
@@ -48,7 +45,10 @@ jobs:
           - name: login to DockerHub
 
             run: |
-                  docker login -u $docker_user -p $docker_pass
+                  echo $docker_user
+            env:
+              docker_user: ${{ secrets.DOCKER_HUB_USER }}
+              docker_pass: ${{ secrets.DOCKER_HUB_PASS }}      
         
 
           - name: push to DockerHub
