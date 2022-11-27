@@ -33,8 +33,9 @@ jobs:
                   echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
           - name: Test
+            working-directory: my-app
             run: |
-                  docker build -t my-app:$version
+                  docker build -t my-app:$version .
             
                   
           
