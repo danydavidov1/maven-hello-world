@@ -44,7 +44,7 @@ jobs:
 
             run: |
                   echo $docker_repo
-                  docker build -t ${{ secrets.DOCKER_HUB_USER }}/hello_world_test:$version --build-arg version=$version .
+                  docker build -t ${{ secrets.DOCKER_HUB_USER }}/hello_world_test:$version --build-arg APP_VERSION=$version .
 
           - name: login to DockerHub
 
