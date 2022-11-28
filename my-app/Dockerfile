@@ -23,7 +23,7 @@ RUN apt-get update \
 
   USER java
 
-
+RUN echo ${version}
 # CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
 
 
