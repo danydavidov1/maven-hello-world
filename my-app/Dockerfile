@@ -25,4 +25,4 @@ RUN apt-get update \
   USER java
 
 
-CMD ["java", "-jar", "target/my-app-"${APP_VERSION}".jar"]
+CMD ["java", "-jar", "target/my-app-${APP_VERSION}.jar"]
