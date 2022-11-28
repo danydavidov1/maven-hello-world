@@ -9,9 +9,9 @@ FROM openjdk:8-slim-bullseye
 
 ARG UID=1000
 ARG GID=1000
+ARG VERSION
 
 COPY --from=builder target/*.jar target/
-
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends build-essential curl libpq-dev \
@@ -24,4 +24,4 @@ RUN apt-get update \
   USER java
 
 
-CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
+CMD ["java", "-jar", "target/my-app-${VERSION}.jar"]
