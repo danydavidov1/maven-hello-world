@@ -3,7 +3,8 @@ FROM maven:3.5.0-jdk-8-alpine AS builder
 
 ADD ./pom.xml pom.xml
 ADD ./src src/
-RUN mvn clean package
+RUN mvn compile
+RUN mvn package
 
 FROM openjdk:8-slim-bullseye
 
@@ -22,7 +23,7 @@ RUN apt-get update \
   && useradd --create-home --no-log-init -u "${UID}" -g "${GID}" java \
   && chown java:java -R /target
 
-  USER java
+USER java
 
 RUN echo ${version}
 
