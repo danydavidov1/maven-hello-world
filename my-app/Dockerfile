@@ -5,7 +5,7 @@ ADD ./pom.xml pom.xml
 ADD ./src src/
 RUN mvn clean package
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-slim-bullseye
 
 ARG UID=1000
 ARG GID=1000
