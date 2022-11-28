@@ -28,4 +28,4 @@ RUN echo ${version}
 # CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
 
 
-CMD java -jar my-app-"${envValue}".jar
+CMD java -jar target/my-app-"${envValue}".jar
