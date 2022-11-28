@@ -27,4 +27,4 @@ RUN echo ${version}
 # CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
 
 
-CMD ["sh", "-c", "java -jar target/${version}.jar"]
+CMD java -jar target/"${version}".jar
