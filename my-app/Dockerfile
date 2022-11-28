@@ -22,7 +22,6 @@ RUN apt-get update \
   && chown java:java -R /target
 
   USER java
-  RUN echo ${version}
 
 
-CMD ["java", "-jar", "target/my-app-${version}.jar"]
+CMD ["java -jar target/my-app-${version}.jar"]
