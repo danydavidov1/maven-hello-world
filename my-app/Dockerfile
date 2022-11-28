@@ -10,6 +10,7 @@ FROM openjdk:8-slim-bullseye
 ARG UID=1000
 ARG GID=1000
 ARG version
+ENV envValue=$version
 
 COPY --from=builder target/*.jar target/
 
@@ -27,4 +28,4 @@ RUN echo ${version}
 # CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
 
 
-CMD java -jar my-app-"${version}".jar
+CMD java -jar my-app-"${envValue}".jar
