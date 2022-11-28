@@ -23,4 +23,4 @@ RUN apt-get update \
   USER java
 
 
-CMD ["java", "-jar", "target/my-app-0.0.1.jar"]
+CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
