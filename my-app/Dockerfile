@@ -25,6 +25,4 @@ RUN apt-get update \
 
 USER java
 
-RUN echo ${version}
-
 CMD java -jar target/my-app-"${envValue}".jar
