@@ -25,7 +25,7 @@ RUN apt-get update \
   USER java
 
 RUN echo ${version}
-# CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
+CMD ["sh", "-c", "java -jar target/my-app-"${envValue}".jar"]
 
 
-CMD java -jar target/my-app-"${envValue}".jar
+# CMD java -jar target/my-app-"${envValue}".jar
