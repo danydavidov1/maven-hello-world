@@ -7,21 +7,21 @@ RUN mvn clean package
 
 FROM openjdk:8-jre-alpine
 
-ARG USERNAME=daniel
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
+ARG UID=1000
+ARG GID=1000
 
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    && apt-get update \
-    && apt-get install -y sudo \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
-
-USER $USERNAME
-
-USER daniel
-WORKDIR /home/$USERNAME
 COPY --from=builder target/*.jar target/
+
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends build-essential curl libpq-dev \
+  && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man \
+  && apt-get clean \
+  && groupadd -g "${GID}" java \
+  && useradd --create-home --no-log-init -u "${UID}" -g "${GID}" java \
+  && chown java:java -R /target
+
+  USER java
+
 
 CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
