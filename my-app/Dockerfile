@@ -9,7 +9,8 @@ FROM openjdk:8-slim-bullseye
 
 ARG UID=1000
 ARG GID=1000
-ARG version
+ARG APP_VERSION
+ENV VERSION=$APP_VERSION
 
 COPY --from=builder target/*.jar target/
 
@@ -24,4 +25,4 @@ RUN apt-get update \
   USER java
 
 
-CMD ["java -jar target/my-app-${version}.jar"]
+CMD ["java", "-jar", "target/my-app-${VERSION}.jar"]
