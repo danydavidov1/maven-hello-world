@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  helpppp:
 
     env:
         DOCKER_USER: ${{ secrets.DOCKER_HUB_USER }}
@@ -44,7 +44,7 @@ jobs:
 
             run: |
                   echo $docker_repo
-                  docker build -t $DOCKER_USER/hello_world_test:$version --build-arg APP_VERSION=$version .
+                  docker build -t $DOCKER_USER/hello_world_test:$version .
 
           - name: login to DockerHub
 
