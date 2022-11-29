@@ -24,4 +24,5 @@ RUN apt-get update \
 
 USER java
 
-CMD java -jar target/my-app-"${envValue}".jar
+# CMD java -jar target/my-app-"${envValue}".jar
+CMD java -cp target/my-app-"${envValue}".jar com.mycompany.app.App
